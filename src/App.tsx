@@ -12,6 +12,7 @@ import { Timeline } from './components/Timeline';
 import { Countdown } from './components/Countdown';
 import { RSVPForm } from './components/RSVPForm';
 import { WishesSection } from './components/WishesSection';
+import { WEDDING } from './weddingConfig';
 
 export default function App() {
   const [showInvitation, setShowInvitation] = useState(false);
@@ -59,8 +60,6 @@ export default function App() {
     );
   }
 
-  // Set the wedding date for the countdown
-  const weddingDate = new Date("2027-01-05T09:00:00");
 
   return (
     <div className="font-sans text-stone-800 bg-brand-ivory overflow-hidden selection:bg-brand-beige-deep/20">
@@ -101,7 +100,7 @@ export default function App() {
               The Wait Is Almost Over
             </span>
           </div>
-          <Countdown targetDate={weddingDate} />
+          <Countdown targetDate={WEDDING.date} />
       </div>
 
       <div className="py-24 sm:py-32 bg-brand-ivory relative">
@@ -116,9 +115,9 @@ export default function App() {
       <footer className="py-12 bg-white border-t border-brand-beige/20 text-center relative overflow-hidden mt-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-beige/10 blur-[80px] rounded-full pointer-events-none" />
         <Heart className="w-6 h-6 mx-auto mb-6 text-brand-beige-deep fill-brand-beige/20" />
-        <p className="font-display text-4xl sm:text-5xl text-stone-800 mb-2">Isuri &&nbsp;Duvindu</p>
+        <p className="font-display text-4xl sm:text-5xl text-stone-800 mb-2">{WEDDING.groom.name} &&nbsp;{WEDDING.bride.name}</p>
         <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.4em] font-sans text-stone-400 font-semibold block mb-8">
-          January 05, 2027
+          {WEDDING.longDate} · {WEDDING.venue}, {WEDDING.city}
         </span>
 
       </footer>

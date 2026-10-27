@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { WEDDING, getGuestDisplayName } from "../weddingConfig";
 
 export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () => void, onMusicStart?: () => void }) {
   const [opened, setOpened] = useState(false);
   
-  const params = new URLSearchParams(window.location.search);
-  const prefix = params.get('prefix');
-  const guestName = params.get('name');
+  const guestName = getGuestDisplayName();
 
   useEffect(() => {
     if (opened) {
@@ -412,7 +411,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
               </svg>
 
               <div className="text-eyebrow">
-                {guestName ? `Dear ${prefix} ${guestName},` : 'Promise of Love'}
+                {guestName ? `Dear ${guestName},` : 'Promise of Love'}
               </div>
 
               <div className="divider">
@@ -422,9 +421,9 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
               </div>
 
               <h1 className="text-names">
-                Isuri
+                {WEDDING.groom.name}
                 <span className="text-ampersand">&</span>
-                &nbsp;Duvindu
+                &nbsp;{WEDDING.bride.name}
               </h1>
 
               <div className="divider">
@@ -435,9 +434,9 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
 
               <div className="text-details">
                 Request the honour of your presence<br />
-                <span className="text-date">Tuesday 05 January 2027 At 09:00 AM</span>
-                <span className="text-church">Hilton Colombo</span><br />
-                Colombo
+                <span className="text-date">{WEDDING.longDate} · {WEDDING.timeRange}</span>
+                <span className="text-church">{WEDDING.venue}</span><br />
+                {WEDDING.city}
               </div>
             </div>
           </div>

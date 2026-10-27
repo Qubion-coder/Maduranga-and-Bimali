@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Navigation, Compass, Map } from 'lucide-react';
+import { MapPin, Navigation, Compass, Map, Phone } from 'lucide-react';
+import { WEDDING } from '../weddingConfig';
 
 export const Location: React.FC = () => {
-  const venueAddress = "Hilton Colombo";
-  const mapUrl = `https://maps.google.com/maps?q=Hilton+Colombo&t=&z=14&ie=UTF8&iwloc=&output=embed`;
-  const liveLocationUrl = "https://maps.app.goo.gl/d7QQvgGSUQEUGNzx5";
+  const contacts = [WEDDING.groom, WEDDING.bride];
 
   return (
     <div className="max-w-[85rem] mx-auto px-6 relative py-12">
@@ -45,15 +44,15 @@ export const Location: React.FC = () => {
                   <MapPin className="text-brand-beige-deep w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-2xl font-serif text-stone-800 mb-1">Hilton Colombo</p>
-                  <p className="text-[11px] uppercase tracking-[0.2em] font-medium text-stone-400 leading-relaxed mb-6">Colombo</p>
+                  <p className="text-2xl font-serif text-stone-800 mb-1">{WEDDING.venue}</p>
+                  <p className="text-[11px] uppercase tracking-[0.2em] font-medium text-stone-400 leading-relaxed mb-6">{WEDDING.city}</p>
                   
                   <p className="text-stone-500/90 italic font-serif text-lg leading-relaxed max-w-sm mb-10 pl-4 border-l-[1.5px] border-brand-beige/40">
                     "A serene and elegant setting where we will begin our new chapter together."
                   </p>
 
                   <a
-                    href={liveLocationUrl}
+                    href={WEDDING.mapsLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 bg-stone-800 text-brand-champagne px-8 py-4 rounded-full font-sans tracking-[0.2em] text-xs uppercase hover:bg-stone-900 hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] transition-all duration-300 active:scale-95 group/btn"
@@ -61,6 +60,23 @@ export const Location: React.FC = () => {
                     <Navigation className="w-4 h-4 text-brand-gold group-hover/btn:rotate-45 transition-transform duration-300" />
                     Open Live Location
                   </a>
+
+                  <div className="mt-10 pt-8 border-t border-brand-beige/30">
+                    <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-400 mb-4">For Inquiries</p>
+                    <div className="space-y-3">
+                      {contacts.map((c) => (
+                        <a
+                          key={c.name}
+                          href={`tel:+94${c.phone.replace(/\D/g, '').slice(1)}`}
+                          className="flex items-center gap-3 text-stone-700 hover:text-brand-beige-deep transition-colors"
+                        >
+                          <Phone className="w-4 h-4 text-brand-beige-deep flex-shrink-0" />
+                          <span className="font-serif text-lg w-28">{c.name}</span>
+                          <span className="font-sans text-sm tracking-[0.1em]">{c.phone}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -85,8 +101,8 @@ export const Location: React.FC = () => {
             <div className="absolute inset-0 bg-brand-beige/10 mix-blend-multiply pointer-events-none z-20 group-hover/map:opacity-0 transition-opacity duration-1000" />
             
             <iframe
-              title="Hilton Colombo Location"
-              src={mapUrl}
+              title={`${WEDDING.venue} Location`}
+              src={WEDDING.mapsEmbed}
               width="100%"
               height="100%"
               style={{ border: 0, filter: 'contrast(1.1) saturate(1.2)' }}
