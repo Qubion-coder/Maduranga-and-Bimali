@@ -8,7 +8,7 @@ export const WEDDING = {
   },
   bride: {
     name: 'Bimali',
-    parents: 'Daughter of Mr. R.S. Ruwan & Mrs. K.V.N. Nilmini',
+    parents: 'Daughter of Mr. R.S. Ranjith & Mrs. K.V.N. Nilmini',
     phone: '071-0552925',
   },
   date: new Date('2026-11-20T09:00:00+05:30'),
