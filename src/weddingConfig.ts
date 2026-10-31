@@ -3,7 +3,7 @@
 export const WEDDING = {
   groom: {
     name: 'Maduranga',
-    parents: 'Son of the late Mr. H.W. Ariyadasa & the late Mrs. Wilta Jayasinghe',
+    parents: 'Son of the late Mr. H.W. Ariyadasa & the late Mrs. Chilta Jayasinghe',
     phone: '071-5990273',
   },
   bride: {
